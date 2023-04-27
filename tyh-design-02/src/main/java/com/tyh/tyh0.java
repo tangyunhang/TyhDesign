@@ -1,7 +1,7 @@
 package com.tyh;
 
-import com.tyh.interf.tyh01;
-import com.tyh.interf.tyh02;
+import com.tyh.configuration.interf.tyh01;
+import com.tyh.configuration.interf.tyh02;
 
 /**
  * @Description: tyh

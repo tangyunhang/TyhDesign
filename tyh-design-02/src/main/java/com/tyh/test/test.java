@@ -1,8 +1,7 @@
 package com.tyh.test;
 
-import com.tyh.interf.tyh02;
+import com.tyh.configuration.interf.tyh02;
 import com.tyh.tyh;
-import com.tyh.tyh0;
 
 /**
  * @Description: test

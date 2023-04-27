@@ -1,4 +1,4 @@
-package com.tyh.interf;
+package com.tyh.configuration.interf;
 
 public interface tyh01 {
     public void t1();
