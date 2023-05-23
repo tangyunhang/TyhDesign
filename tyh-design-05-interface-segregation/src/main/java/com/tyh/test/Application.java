@@ -1,8 +1,6 @@
 package com.tyh.test;
 
-import com.tyh.configuration.KafkaConfig;
-import com.tyh.configuration.MysqlConfig;
-import com.tyh.configuration.RedisConfig;
+import com.tyh.configuration.*;
 import com.tyh.source.ConfigSource;
 import com.tyh.source.ZookeeperConfigSource;
 import com.tyh.taskServer.ScheduledUpdater;
@@ -18,6 +16,8 @@ public class Application {
     private static final RedisConfig redisConfig = new RedisConfig (configSource);
     private static final MysqlConfig mysqlConfig = new MysqlConfig (configSource);
     private static final KafkaConfig kafkaConfig = new KafkaConfig (configSource);
+    private static final ApiMetrics apiMetrics = new ApiMetrics ();
+    private static final DbMetrics dbMetrics = new DbMetrics ();
 
     public static void main(String[] args) {
         ScheduledUpdater redisConfigServier
@@ -31,6 +31,8 @@ public class Application {
         SimpleHttpServer simpleHttpServer = new SimpleHttpServer("172.0.0.1",2390);
         simpleHttpServer.addViewer ("/config",kafkaConfig);
         simpleHttpServer.addViewer ("/config",mysqlConfig);
+        simpleHttpServer.addViewer("/metrics", apiMetrics);
+        simpleHttpServer.addViewer("/metrics", dbMetrics);
         simpleHttpServer.run ();
     }
 }
