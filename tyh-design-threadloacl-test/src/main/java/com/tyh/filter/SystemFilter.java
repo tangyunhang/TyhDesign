@@ -2,6 +2,7 @@ package com.tyh.filter;
 
 
 import com.tyh.ThreadLoacl.SystemSession;
+import com.tyh.ThreadLoacl.SystemSession2;
 import com.tyh.common.UserSession;
 import org.apache.catalina.connector.RequestFacade;
 
@@ -32,14 +33,16 @@ public class SystemFilter extends HttpFilter {
         if (!(response instanceof HttpServletResponse)) {
             throw new ServletException(request + " not HttpServletResponse");
         }
-        if(null!= SystemSession.getUserSession ()){
-            SystemSession.removeUserSession ();
+        if(null!= SystemSession.getSession ()){
+            SystemSession.removeSession ();
+            SystemSession2.removeSession ();
         }
-        SystemSession.setUserSession (UserSession.builder ()
+        UserSession userSession = UserSession.builder ()
                 .name (((RequestFacade) request).getHeader ("userName"))
                 .password (((RequestFacade) request).getHeader ("password"))
-                .build ());
-
+                .build ();
+        SystemSession.setSession (userSession);
+        SystemSession2.init(String.valueOf (Math.random ()),userSession);
         doFilter((HttpServletRequest) request, (HttpServletResponse) response, chain);
     }
 }

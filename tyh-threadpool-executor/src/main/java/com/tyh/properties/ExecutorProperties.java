@@ -19,5 +19,9 @@ public class ExecutorProperties {
     private int queueCapacity;
     //线程池中的线程的名称前缀
     private String namePrefix;
+    //线程池的存活时间
+    private int keepAliveTime;
+    //是否启动核心线程超时
+    private boolean allowCoreThreadTimeOut;
 
 }

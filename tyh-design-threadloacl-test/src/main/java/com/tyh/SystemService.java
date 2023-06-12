@@ -1,6 +1,7 @@
 package com.tyh;
 
 import com.tyh.ThreadLoacl.SystemSession;
+import com.tyh.ThreadLoacl.SystemSession2;
 import com.tyh.common.UserSession;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -15,11 +16,16 @@ import org.springframework.stereotype.Service;
 public class SystemService {
 
     public void sayHello() {
-        UserSession userSession = SystemSession.getUserSession ();
+        UserSession userSession = SystemSession.getSession ();
         log.info (Thread.currentThread ().getName ()+"sayHello="+userSession.getName ()+":"+userSession.getPassword ());
 
         userSession.setPassword (userSession.getPassword()+"dsdsds");
-        UserSession userSession2 = SystemSession.getUserSession ();
+        UserSession userSession2 = SystemSession.getSession ();
         log.info (Thread.currentThread ().getName ()+"sayHello="+userSession2.getName ()+":"+userSession2.getPassword ());
+        SystemSession2 systemSession = SystemSession2.getSystemSession ();
+
+        log.info (Thread.currentThread ().getName ()+"sayHello="+systemSession.getUserSession ().getName ()+":"+systemSession.getUserSession ().getPassword ()+
+        ":SessionId="+systemSession.getSessionId ());
+
     }
 }

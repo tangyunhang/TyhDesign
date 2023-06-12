@@ -9,14 +9,14 @@ import com.tyh.common.UserSession;
  */
 public class SystemSession {
     private static ThreadLocal<UserSession> local = new ThreadLocal<UserSession>();
-    public static UserSession getUserSession() {
+    public static UserSession getSession() {
         return local.get();
     }
-    public static void setUserSession(UserSession userSession) {
+    public static void setSession(UserSession userSession) {
         local.set(userSession);
     }
 
-    public static void removeUserSession() {
+    public static void removeSession() {
         local.remove ();
     }
 }

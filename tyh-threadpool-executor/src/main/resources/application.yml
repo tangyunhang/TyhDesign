@@ -14,3 +14,7 @@ async:
       queue_capacity: 99999
       # 配置线程池中的线程的名称前缀
       name_prefix: async-service-
+      # 配置线程池中的线程的名称前缀
+      keep_alive_time: 30
+      #配置是否启动核心线程超时
+      allowCoreThreadTimeOut: true

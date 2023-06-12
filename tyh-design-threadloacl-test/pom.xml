@@ -32,6 +32,20 @@
             <scope>test</scope>
         </dependency>
 
+        <dependency>
+            <groupId>com.tyh</groupId>
+            <artifactId>tyh-threadpool-executor</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.tyh</groupId>
+            <artifactId>tyh-threadpool-executor</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+
+
     </dependencies>
 
     <build>

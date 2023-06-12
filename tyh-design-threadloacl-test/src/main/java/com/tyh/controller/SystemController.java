@@ -3,6 +3,7 @@ package com.tyh.controller;
 import com.tyh.SystemService;
 import com.tyh.ThreadLoacl.SystemSession;
 import com.tyh.common.UserSession;
+import com.tyh.interf.AsyncService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -26,10 +27,18 @@ public class SystemController {
 
     @GetMapping("/login")
     public String Longin(HttpServletRequest httpServletRequest){
-        UserSession userSession = SystemSession.getUserSession ();
+        UserSession userSession = SystemSession.getSession ();
             new Thread ();
         log.info (Thread.currentThread ().getName ()+"Longin="+userSession.getName () + ":" + userSession.getPassword ());
         systemService.sayHello ();
+        AsyncService asyncService = new AsyncService () {
+            @Override
+            public void executeAsync() {
+                System.out.println ("ddd");
+            }
+        };
+        asyncService.executeAsync ();
+
         return "system/login";
     }
     @RequestMapping("time")
